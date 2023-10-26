@@ -14,7 +14,6 @@ import { store } from '../store/store';
 import { isDarkMode } from '../utils/mmkv';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-const AnimatedMaskView = Animated.createAnimatedComponent(MaskedView);
 
 const viewShotOptions = { quality: 1, format: 'png' };
 
@@ -82,7 +81,7 @@ const ThemeWrapper = ({ mode, isAnimating, children }, props) => {
  useEffect(() => {
   if (isAnimating) {
    setLoading(true);
-   width.value = withTiming(50, { duration: 700 }, () =>
+   width.value = withTiming(50, { duration: 900 }, () =>
     runOnJS(clearAnimation)()
    );
   }
@@ -91,7 +90,7 @@ const ThemeWrapper = ({ mode, isAnimating, children }, props) => {
  return (
   <View style={styles.maskViewStyle}>
    {isLoading && (
-    <AnimatedMaskView
+    <MaskedView
      style={[styles.maskViewStyle2, { zIndex: isAnimating ? 1000 : -1 }]}
      maskElement={
       <>
@@ -108,7 +107,7 @@ const ThemeWrapper = ({ mode, isAnimating, children }, props) => {
        />
       </View>
      </>
-    </AnimatedMaskView>
+    </MaskedView>
    )}
 
    {!lightImage && (
