@@ -49,7 +49,7 @@ const ThemeWrapper = ({ mode, isAnimating, children }, props) => {
    borderRadius: width.value,
    left: SCREEN_WIDTH / 2 - width.value / 2,
    top: Platform.OS === 'android' ? 35 : 80,
-   transform: [{ scale: 35 }],
+   transform: [{ scale: 60 }],
   };
  });
 
